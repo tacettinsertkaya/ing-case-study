@@ -23,7 +23,12 @@ export class NavBar extends LitElement {
     select { background:#fff; color:var(--text); border:1px solid var(--border); border-radius:10px; padding:6px 10px; }
     .spacer { flex:1; }
   `;
-  constructor() { super(); this._onLang = () => this.requestUpdate(); }
+  private _onLang: () => void;
+
+  constructor() { 
+    super();
+    this._onLang = () => this.requestUpdate();
+  }
   connectedCallback() { super.connectedCallback(); document.addEventListener('i18n-changed', this._onLang); }
   disconnectedCallback() { super.disconnectedCallback(); document.removeEventListener('i18n-changed', this._onLang); }
   changeLang(e:any) { i18n.setLang(e.target.value); }
@@ -32,7 +37,6 @@ export class NavBar extends LitElement {
 
 
    render() {
-
     return html`
       <div class="wrap">
       <a class="brand" href="/employees">
