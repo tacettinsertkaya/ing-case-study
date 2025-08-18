@@ -1,5 +1,8 @@
 {
-  "nav": { "employees": "Employees", "addEmployee": "Add Employee" },
+  "nav": {
+    "employees": "Employees",
+    "addEmployee": "Add Employee"
+  },
   "list": {
     "title": "Employee List",
     "search": "Search",
@@ -15,15 +18,8 @@
     "page": "Page",
     "of": "of"
   },
-  "create": {
-    "title": "Create Employee"
-  },
-  "edit": {
-    "title": "Edit Employee"
-  },
-  "form": {
-    "title_new": "Create Employee",
-    "title_edit": "Edit Employee",
+  "employee": {
+    "title": "Employee List",
     "firstName": "First Name",
     "lastName": "Last Name",
     "dob": "Date of Birth",
@@ -32,11 +28,17 @@
     "email": "Email Address",
     "department": "Department",
     "position": "Position",
-    "departments": { "Analytics": "Analytics", "Tech": "Tech" },
-    "positions": { "Junior": "Junior", "Medior": "Medior", "Senior": "Senior" },
+    "departments": {
+      "Analytics": "Analytics",
+      "Tech": "Tech"
+    },
+    "positions": {
+      "Junior": "Junior",
+      "Medior": "Medior",
+      "Senior": "Senior"
+    },
     "cancel": "Cancel",
     "save": "Save",
-    "create": "Create",
     "confirmSave": "Apply these changes?",
     "confirmCreate": "Create this employee?",
     "validation": {
@@ -47,6 +49,12 @@
       "doeRange": "Employment date must be after birth and not in the future.",
       "uniqueEmail": "This email already exists.",
       "uniquePhone": "This phone already exists."
+    },
+    "create": {
+      "title": "Create Employee"
+    },
+    "edit": {
+      "title": "Edit Employee"
     }
   },
   "fields": {

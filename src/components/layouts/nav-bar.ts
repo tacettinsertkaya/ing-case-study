@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import  '../ui-elements/ing-link';
 import  '../ui-elements/ing-icon';
-import { t, i18n } from '../../../assets/i18n/i18n.js';
+import { t, i18n } from '../../assets/i18n/i18n.js';
 
 @customElement('nav-bar')
 export class NavBar extends LitElement {
@@ -40,7 +40,7 @@ export class NavBar extends LitElement {
     return html`
       <div class="wrap">
       <a class="brand" href="/employees">
-        <img src="assets/images/logo.png" alt="ING Bank">
+        <img src="/src/assets/images/logo.png" alt="ING Bank">
       </a>
       <span class="spacer"></span>
       <ing-link  url='/employees'>
