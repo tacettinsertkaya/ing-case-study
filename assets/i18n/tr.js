@@ -1,0 +1,54 @@
+export const tr = {
+  nav: { employees: 'Çalışanlar', addEmployee: 'Çalışan Ekle' },
+  list: {
+    title: 'Çalışan Kayıtları',
+    search: 'Ara',
+    view: 'Görünüm',
+    view_list: 'Liste',
+    view_table: 'Tablo',
+    add: 'Ekle',
+    edit: 'Düzenle',
+    delete: 'Sil',
+    confirmDelete: 'Bu çalışan silinsin mi? Geri alınamaz.',
+    noResults: 'Kayıt bulunamadı.',
+    page: 'Sayfa',
+    of: '/'
+  },
+  form: {
+    title_new: 'Çalışan Oluştur',
+    title_edit: 'Çalışanı Düzenle',
+    firstName: 'Ad',
+    lastName: 'Soyad',
+    dob: 'Doğum Tarihi',
+    doe: 'İşe Başlama',
+    phone: 'Telefon',
+    email: 'E-posta',
+    department: 'Departman',
+    position: 'Pozisyon',
+    departments: { Analytics: 'Analitik', Tech: 'Teknoloji' },
+    positions: { Junior: 'Junior', Medior: 'Medior', Senior: 'Senior' },
+    cancel: 'İptal',
+    save: 'Kaydet',
+    create: 'Oluştur',
+    confirmSave: 'Bu değişiklikler uygulansın mı?',
+    confirmCreate: 'Bu çalışan oluşturulsun mu?',
+    validation: {
+      required: 'Bu alan zorunludur.',
+      email: 'Geçerli bir e-posta girin.',
+      phone: 'Geçerli bir telefon girin (en az 7 rakam).',
+      dobPast: 'Doğum tarihi geçmişte olmalı.',
+      doeRange: 'İşe başlama tarihi doğumdan sonra ve gelecekte olmamalı.',
+      uniqueEmail: 'Bu e-posta zaten var.',
+      uniquePhone: 'Bu telefon zaten var.'
+    }
+  },
+  fields: {
+    fullName: 'Ad Soyad',
+    department: 'Departman',
+    position: 'Pozisyon',
+    email: 'E-posta',
+    phone: 'Telefon',
+    dob: 'Doğum',
+    doe: 'İşe Başlama'
+  }
+};

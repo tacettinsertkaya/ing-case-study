@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import  '../ui-elements/ing-link';
 import  '../ui-elements/ing-icon';
+import { t, i18n } from '../../../assets/i18n/i18n.js';
 
 @customElement('nav-bar')
 export class NavBar extends LitElement {
@@ -19,17 +20,19 @@ export class NavBar extends LitElement {
     .actions { display:flex; align-items:center; gap:8px; }
     .lang-selector { display:flex; align-items:center; gap:8px; }
     .lang-selector img { width:20px; height:14px; border-radius:3px; }
-    .pill { display:inline-flex; align-items:center; gap:8px; padding:7px 10px; background:#fff; border:1px solid var(--border); border-radius:10px; }
-    .pill svg { width:16px;height:16px; }
     select { background:#fff; color:var(--text); border:1px solid var(--border); border-radius:10px; padding:6px 10px; }
     .spacer { flex:1; }
   `;
-
+  constructor() { super(); this._onLang = () => this.requestUpdate(); }
+  connectedCallback() { super.connectedCallback(); document.addEventListener('i18n-changed', this._onLang); }
+  disconnectedCallback() { super.disconnectedCallback(); document.removeEventListener('i18n-changed', this._onLang); }
+  changeLang(e:any) { i18n.setLang(e.target.value); }
 
 
 
 
    render() {
+
     return html`
       <div class="wrap">
       <a class="brand" href="/employees">
@@ -37,12 +40,15 @@ export class NavBar extends LitElement {
       </a>
       <span class="spacer"></span>
       <ing-link  url='/employees'>
-      Employee</ing-link>
+      ${t('nav.employees')}</ing-link>
       <ing-link  url='/employees/new'>
-      New Employee</ing-link>
+      ${t('nav.addEmployee')}</ing-link>
       <div class="actions">
         <div class="lang-selector">
-       
+          <select @change="${this.changeLang}">
+            <option value="en" ?selected="${i18n.lang === 'en'}">English</option>
+            <option value="tr" ?selected="${i18n.lang === 'tr'}">Türkçe</option>
+          </select>
         </div>
       </div>
       </div>
