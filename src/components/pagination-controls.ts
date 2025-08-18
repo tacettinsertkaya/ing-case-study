@@ -34,7 +34,6 @@ export class PaginationControls extends LitElement {
   prev() { this.dispatchEvent(new CustomEvent('prev')); }
   next() { this.dispatchEvent(new CustomEvent('next')); }
   go(p:number | string) { 
-    console.log('goto', p);
     this.dispatchEvent(new CustomEvent('goto', { detail: { page: p } })); 
   }
   render() {

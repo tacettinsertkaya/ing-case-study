@@ -14,6 +14,11 @@ export class IngLink extends LitElement {
 
     a:active {
       transform: translateY(0);
+      color:#ff6600;
+    }
+
+    .link.active {
+      color: #ff6600;
     }
 
     .primary {
@@ -66,22 +71,25 @@ export class IngLink extends LitElement {
 
   @property({ type: String })
   url: string = '';
-  
+    @property({ type: String })
+  class: string = '';
   @property({ type: String })
   type: linkVariant = 'default';
 
 
   @property({ type: Boolean })
   disabled: boolean = false;
+  @property({ type: Boolean })
+  active: boolean = false;
 
   render() {
     return html`
-      <a href=${this.url}
-        class=${this.type}
-        ?disabled=${this.disabled}
+      <a
+      href=${this.url}
+      class="link ${this.type} ${this.class} ${this.active ? 'active' : ''}"
+      ?disabled=${this.disabled}
       >
-      
-        <slot></slot>
+      <slot></slot>
       </a>
     `;
   }
