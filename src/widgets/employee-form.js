@@ -1,26 +1,27 @@
-import { css, html, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { Employee } from "../data/employee";
-import { isEmail, isEmploymentInRange, isPast, isPhone, required } from "../utils/validator";
-import { t } from '../assets/i18n/i18n';
-import { Router } from "@vaadin/router";
-import '../components/ui-elements/ing-button';
-import '../components/ui-elements/ing-link';
-@customElement('employee-form')
-export class EmployeeForm extends LitElement {
-  @property({ type: Object }) employee: Employee | null | undefined;
-  @property({ type: String }) mode: 'create' | 'edit';
-  @property({ type: String }) title: string;
-  @property({ state: true,type:Object }) errors: { [key: string]: string } = {};
-  @property({ type: String }) firstName: string = '';
-  @property({ type: String }) lastName: string = '';
-  @property({ type: String }) dob: string = '';
-  @property({ state: true,type: String }) doe: string = '';
-  @property({ state: true,type: String }) phone: string = '';
-  @property({ state: true,type: String }) email: string = '';
-  @property({ state: true,type: String }) department: string = '';
-  @property({ state: true,type: String }) position: string = '';
+import { LitElement, html, css } from 'lit';
+import { t } from '../utils/i18n.js';
+import { addEmployee, updateEmployee } from '../store.js';
+import { isEmail, isPhone, isPast, isEmploymentInRange, required } from '../utils/validators.js';
+import { Router } from '@vaadin/router';
+import '../components/ui-elements/ing-link.js';
+import '../components/ui-elements/ing-button.js';
 
+class EmployeeForm extends LitElement {
+  static properties = {
+    employee: { type: Object },
+    mode: { type: String }, // 'create' | 'edit'
+    title: { type: String },
+    errors: { state: true },
+    // local fields
+    firstName: { state: true },
+    lastName: { state: true },
+    dob: { state: true },
+    doe: { state: true },
+    phone: { state: true },
+    email: { state: true },
+    department: { state: true },
+    position: { state: true }
+  };
   static styles = css`
     :host { display:block; }
     .card { background: var(--card); border-radius: 16px; padding: 16px; }
@@ -32,7 +33,6 @@ export class EmployeeForm extends LitElement {
     .err { color: var(--danger); font-size: 12px; }
     @media (max-width: 720px) { form { grid-template-columns: 1fr; } }
   `;
-    private _onLang: () => void;
 
   constructor() {
     super();
@@ -42,6 +42,7 @@ export class EmployeeForm extends LitElement {
     this.employee = null;
     this.mode = 'create';
     this.title = '';
+    this.errors = {};
 
     // defaults
     this.firstName = '';
@@ -50,13 +51,13 @@ export class EmployeeForm extends LitElement {
     this.doe = '';
     this.phone = '';
     this.email = '';
-    this.department = '';
-    this.position = '';
+    this.department = 'Analytics';
+    this.position = 'Junior';
   }
 
   // Whenever `employee` changes (e.g., when navigating /employees/:id/edit),
   // hydrate form fields accordingly.
-  updated(changed:any) {
+  updated(changed) {
     if (changed.has('employee') && this.employee) {
       const e = this.employee || {};
       this.firstName = e.firstName || '';
@@ -70,7 +71,7 @@ export class EmployeeForm extends LitElement {
     }
   }
   validate() {
-    const errs: { [key: string]: string } = {};
+    const errs = {};
     if (!required(this.firstName)) errs.firstName = t('employee.validation.required');
     if (!required(this.lastName)) errs.lastName = t('employee.validation.required');
     if (!required(this.dob) || !isPast(this.dob)) errs.dob = t('employee.validation.dobPast');
@@ -80,26 +81,24 @@ export class EmployeeForm extends LitElement {
     this.errors = errs;
     return Object.keys(errs).length === 0;
   }
-  async onCancel(e: Event) {
+  async cancel(e) {
     e.preventDefault();
-    if (confirm(t('employee.confirmCancel'))) {
-      Router.go('/employees');
-    }
+    Router.go('/employees');
   }
-  async onSubmit(e: Event) {
+  async onSubmit(e) {
     e.preventDefault();
     if (!this.validate()) return;
     try {
       if (this.mode === 'edit') {
         if (!this.employee) { alert('Employee not found'); return; }
         if (!confirm(t('employee.confirmSave'))) return;
-        // await updateEmployee(this.employee.id, this.serialize());
+        await updateEmployee(this.employee.id, this.serialize());
       } else {
         if (!confirm(t('employee.confirmCreate'))) return;
-        // await addEmployee(this.serialize());
+        await addEmployee(this.serialize());
       }
       Router.go('/employees');
-    } catch (err: any) {
+    } catch (err) {
       if (err?.code === 'uniqueEmail') this.errors = { ...this.errors, email: t('employee.validation.uniqueEmail') };
       else if (err?.code === 'uniquePhone') this.errors = { ...this.errors, phone: t('employee.validation.uniquePhone') };
       else alert(err?.message || String(err));
@@ -126,55 +125,58 @@ export class EmployeeForm extends LitElement {
     return html`
       <h2>${this.title}</h2>
       <div class="card">
-        <form @submit=${this.onSubmit}>
+        <form >
           <label>
             ${t('employee.firstName')}
-            <input .value=${this.firstName || ''} @input=${(e: Event) => this.firstName = (e.target as HTMLInputElement).value} required />
+            <input .value=${this.firstName || ''} @input=${e => this.firstName = e.target.value} required />
             ${this.errors.firstName ? html`<span class="err">${this.errors.firstName}</span>` : ''}
           </label>
           <label>
             ${t('employee.lastName')}
-            <input .value=${this.lastName || ''} @input=${(e: Event) => this.lastName = (e.target as HTMLInputElement).value} required />
+            <input .value=${this.lastName || ''} @input=${e => this.lastName = e.target.value} required />
             ${this.errors.lastName ? html`<span class="err">${this.errors.lastName}</span>` : ''}
           </label>
           <label>
             ${t('employee.dob')}
-            <input type="date" .value=${this.dob || ''} @input=${(e: Event) => this.dob = (e.target as HTMLInputElement).value} required />
+            <input type="date" .value=${this.dob || ''} @input=${e => this.dob = e.target.value} required />
             ${this.errors.dob ? html`<span class="err">${this.errors.dob}</span>` : ''}
           </label>
           <label>
             ${t('employee.doe')}
-            <input type="date" .value=${this.doe || ''} @input=${(e: Event) => this.doe = (e.target as HTMLInputElement).value} required />
+            <input type="date" .value=${this.doe || ''} @input=${e => this.doe = e.target.value} required />
             ${this.errors.doe ? html`<span class="err">${this.errors.doe}</span>` : ''}
           </label>
           <label>
             ${t('employee.phone')}
-            <input .value=${this.phone || ''} @input=${(e: Event) => this.phone = (e.target as HTMLInputElement).value} required />
+            <input .value=${this.phone || ''} @input=${e => this.phone = e.target.value} required />
             ${this.errors.phone ? html`<span class="err">${this.errors.phone}</span>` : ''}
           </label>
           <label>
             ${t('employee.email')}
-            <input type="email" .value=${this.email || ''} @input=${(e: Event) => this.email = (e.target as HTMLInputElement).value} required />
+            <input type="email" .value=${this.email || ''} @input=${e => this.email = e.target.value} required />
             ${this.errors.email ? html`<span class="err">${this.errors.email}</span>` : ''}
           </label>
           <label>
             ${t('employee.department')}
-            <select .value=${this.department} @change=${(e: Event) => this.department = (e.target as HTMLSelectElement).value}>
+            <select .value=${this.department} @change=${e => this.department = e.target.value}>
               <option>Analytics</option>
               <option>Tech</option>
             </select>
           </label>
           <label>
             ${t('employee.position')}
-            <select .value=${this.position} @change=${(e: Event) => this.position = (e.target as HTMLSelectElement).value}>
+            <select .value=${this.position} @change=${e => this.position = e.target.value}>
               <option>Junior</option>
               <option>Medior</option>
               <option>Senior</option>
             </select>
           </label>
           <div class="actions">
-            <ing-button type="secondary" @clickEvent=${this.onCancel}>${t('employee.cancel')} </ing-button>
+            <ing-button  url="/employees" @clickEvent=${this.cancel}>
+              ${t('employee.cancel')}
+            </ing-button>
             <ing-button type="primary" @clickEvent=${this.onSubmit}> ${this.mode === 'edit' ? t('employee.update') : t('employee.save')}</ing-button>
+
           </div>
         </form>
       </div>
@@ -186,3 +188,4 @@ export class EmployeeForm extends LitElement {
     document.removeEventListener('i18n-changed', this._onLang);
   }
 }
+customElements.define('employee-form', EmployeeForm);

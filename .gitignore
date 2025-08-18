@@ -1,9 +1,24 @@
+# Node modules
 node_modules/
+
+# Build output
 dist/
+
+# Logs
 *.log
+
+# System files
 .DS_Store
+
+# VSCode settings
 .vscode/
+
+# Env files
 .env
-.env.local
-.env.production
+.env.*
+
+# Coverage
 coverage/
+
+# npm cache
+.npm/

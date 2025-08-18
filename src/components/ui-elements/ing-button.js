@@ -1,10 +1,8 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
-type buttonType = 'primary' | 'secondary' | 'success' | 'danger';
 
-@customElement('ing-button')
-export class IngButton extends LitElement {
+class IngButton extends LitElement {
   static styles = css`
     :host {
       display: inline-block;
@@ -78,11 +76,11 @@ export class IngButton extends LitElement {
     }
   `;
 
-  @property({ type: String })
-  type: buttonType = 'primary';
+  static properties = {
+    type: { type: String, reflect: true },
+    disabled: { type: Boolean, reflect: true },
+  };
 
-  @property({ type: Boolean })
-  disabled = false;
 
   render() {
     return html`
@@ -96,7 +94,7 @@ export class IngButton extends LitElement {
     `;
   }
 
-  private _handleClick(e: Event) {
+  _handleClick(e) {
     if (this.disabled) {
       e.preventDefault();
       e.stopPropagation();
@@ -110,3 +108,6 @@ export class IngButton extends LitElement {
     }));
   }
 }
+
+
+customElements.define('ing-button', IngButton);

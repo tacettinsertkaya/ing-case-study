@@ -1,12 +1,11 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-type linkVariant = 'default' | 'primary' | 'secondary' | 'success' | 'danger';
 
-@customElement('ing-link')
-export class IngLink extends LitElement {
+class IngLink extends LitElement {
   static styles = css`
     :host {
       display: inline-block;
+      text-decoration: none;
     }
 
     .default { color:var(--text); opacity:.9; padding:8px 10px; border-radius:10px; text-decoration:none; }
@@ -17,6 +16,11 @@ export class IngLink extends LitElement {
       color:#ff6600;
     }
 
+    .link{
+      text-decoration: none;
+      color:#02165a;
+      opacity: .9;
+    }
     .link.active {
       color: #ff6600;
     }
@@ -69,18 +73,9 @@ export class IngLink extends LitElement {
     }
   `;
 
-  @property({ type: String })
-  url: string = '';
-    @property({ type: String })
-  class: string = '';
-  @property({ type: String })
-  type: linkVariant = 'default';
+  static properties = { url: { type: String }, class: { type: String }, type: { type: String }, disabled: { type: Boolean }, active: { type: Boolean } };
 
 
-  @property({ type: Boolean })
-  disabled: boolean = false;
-  @property({ type: Boolean })
-  active: boolean = false;
 
   render() {
     return html`
@@ -95,3 +90,4 @@ export class IngLink extends LitElement {
   }
 
 }
+customElements.define('ing-link', IngLink);
