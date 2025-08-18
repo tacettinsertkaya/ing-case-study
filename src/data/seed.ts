@@ -2,6 +2,7 @@ import { Employee } from "./employee";
 
 export const EmployeeSeed:Array<Employee> = [
    {
+     id: 1,
      firstName: 'Ada',
      lastName: 'Lovelace',
      dob: '1990-12-10',
@@ -12,6 +13,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Senior'
    },
    {
+     id: 2,
      firstName: 'Grace',
      lastName: 'Hopper',
      doe: '2016-02-15',
@@ -22,6 +24,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Senior'
    },
    {
+     id: 3,
      firstName: 'Alan',
      lastName: 'Turing',
      doe: '2018-03-20',
@@ -32,6 +35,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Medior'
    },
    {
+     id: 4,
      firstName: 'Hedy',
      lastName: 'Lamarr',
      doe: '2019-04-25',
@@ -42,6 +46,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Junior'
    },
    {
+     id: 5,
      firstName: 'John',
      lastName: 'Doe',
      doe: '2020-05-30',
@@ -52,6 +57,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Junior'
    },
    {
+     id: 6,
      firstName: 'Alice',
      lastName: 'Wonderland',
      doe: '2021-06-15',
@@ -62,6 +68,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Intern'
    },
    {
+     id: 7,
      firstName: 'Bob',
      lastName: 'Builder',
      doe: '2022-07-20',
@@ -72,6 +79,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Senior'
    },
    {
+     id: 8,
      firstName: 'Charlie',
      lastName: 'Brown',
      doe: '2023-08-10',
@@ -82,6 +90,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Junior'
    },
    {
+     id: 9,
      firstName: 'David',
      lastName: 'Smith',
      doe: '2024-09-15',
@@ -92,6 +101,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Senior'
    },
    {
+     id: 10,
      firstName: 'Eve',
      lastName: 'Online',
      doe: '2025-10-25',
@@ -102,6 +112,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Junior'
    },
    {
+     id: 11,
      firstName: 'Frank',
      lastName: 'Castle',
      doe: '2026-11-30',
@@ -112,6 +123,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Junior'
    },
    {
+     id: 12,
      firstName: 'Grace',
      lastName: 'Hopper',
      doe: '2026-12-31',
@@ -122,6 +134,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Senior'
    },
    {
+     id: 13,
      firstName: 'Isaac',
      lastName: 'Newton',
      doe: '2027-01-15',
@@ -132,6 +145,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Senior'
    },
    {
+     id: 14,
      firstName: 'Jane',
      lastName: 'Doe',
      doe: '2028-02-20',
@@ -142,6 +156,7 @@ export const EmployeeSeed:Array<Employee> = [
      position: 'Senior'
    },
    {
+     id: 15,
      firstName: 'John',
      lastName: 'Smith',
      doe: '2029-03-30',

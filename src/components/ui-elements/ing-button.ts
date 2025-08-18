@@ -1,10 +1,10 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger';
+type buttonType = 'primary' | 'secondary' | 'success' | 'danger';
 
-@customElement('my-button')
-export class MyButton extends LitElement {
+@customElement('ing-button')
+export class IngButton extends LitElement {
   static styles = css`
     :host {
       display: inline-block;
@@ -31,12 +31,12 @@ export class MyButton extends LitElement {
     }
 
     .primary {
-      background: #007bff;
+      background: #ff6600;
       color: white;
     }
 
     .primary:hover {
-      background: #0056b3;
+      background: #ff6600;
     }
 
     .secondary {
@@ -79,7 +79,7 @@ export class MyButton extends LitElement {
   `;
 
   @property({ type: String })
-  variant: ButtonVariant = 'primary';
+  type: buttonType = 'primary';
 
   @property({ type: Boolean })
   disabled = false;
@@ -87,7 +87,7 @@ export class MyButton extends LitElement {
   render() {
     return html`
       <button 
-        class=${this.variant}
+        class=${this.type}
         ?disabled=${this.disabled}
         @click=${this._handleClick}
       >
@@ -103,8 +103,8 @@ export class MyButton extends LitElement {
       return;
     }
 
-    this.dispatchEvent(new CustomEvent('button-click', {
-      detail: { variant: this.variant },
+    this.dispatchEvent(new CustomEvent('clickEvent', {
+      detail: { variant: this.type },
       bubbles: true,
       composed: true,
     }));

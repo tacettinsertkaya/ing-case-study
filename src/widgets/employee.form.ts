@@ -4,10 +4,11 @@ import { Employee } from "../data/employee";
 import { isEmail, isEmploymentInRange, isPast, isPhone, required } from "../utils/validator";
 import { t } from '../assets/i18n/i18n';
 import { Router } from "@vaadin/router";
-
+import '../components/ui-elements/ing-button';
+import '../components/ui-elements/ing-link';
 @customElement('employee-form')
 export class EmployeeForm extends LitElement {
-  @property({ type: Object }) employee: Employee | null;
+  @property({ type: Object }) employee: Employee | null | undefined;
   @property({ type: String }) mode: 'create' | 'edit';
   @property({ type: String }) title: string;
   @property({ state: true,type:Object }) errors: { [key: string]: string } = {};
@@ -78,6 +79,12 @@ export class EmployeeForm extends LitElement {
     if (!required(this.email) || !isEmail(this.email)) errs.email = t('employee.validation.email');
     this.errors = errs;
     return Object.keys(errs).length === 0;
+  }
+  async onCancel(e: Event) {
+    e.preventDefault();
+    if (confirm(t('employee.confirmCancel'))) {
+      Router.go('/employees');
+    }
   }
   async onSubmit(e: Event) {
     e.preventDefault();
@@ -166,8 +173,8 @@ export class EmployeeForm extends LitElement {
             </select>
           </label>
           <div class="actions">
-            <a href="/employees">${t('employee.cancel')}</a>
-            <button type="submit">${this.mode === 'edit' ? t('employee.save') : t('employee.create')}</button>
+            <ing-button type="secondary" @clickEvent=${this.onCancel}>${t('employee.cancel')} </ing-button>
+            <ing-button type="primary" @clickEvent=${this.onSubmit}> ${this.mode === 'edit' ? t('employee.update') : t('employee.save')}</ing-button>
           </div>
         </form>
       </div>

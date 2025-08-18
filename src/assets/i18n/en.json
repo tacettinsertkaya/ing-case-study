@@ -41,6 +41,7 @@
     "save": "Save",
     "confirmSave": "Apply these changes?",
     "confirmCreate": "Create this employee?",
+    "confirmCancel":"Discard changes?",
     "validation": {
       "required": "This field is required.",
       "email": "Enter a valid email.",
@@ -51,11 +52,12 @@
       "uniquePhone": "This phone already exists."
     },
     "create": {
-      "title": "Create Employee"
+      "title": "Add Employee"
     },
     "edit": {
       "title": "Edit Employee"
     }
+
   },
   "fields": {
     "fullName": "Full Name",
