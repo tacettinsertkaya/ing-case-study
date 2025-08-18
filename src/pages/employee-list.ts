@@ -2,6 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { t, i18n } from '../assets/i18n/i18n.js';
 import { EmployeeSeed } from "../data/seed.js";
+import  '../components/pagination-controls';
 
 @customElement('employee-list')
 export class EmployeeList extends LitElement {
@@ -105,11 +106,11 @@ export class EmployeeList extends LitElement {
       ${this.renderTable()}
       <div style="margin-top:14px;">
         <pagination-controls
-          .page=${this.page}
-          .totalPages=${this.pageCount}
+          page=${this.page}
+          totalPages=${this.pageCount}
           @prev=${() => { if (this.page > 1) this.page--; }}
           @next=${() => { if (this.page < this.pageCount) this.page++; }}
-          @goto=${(e: Event) => { this.page = (e.target as any).detail.page; }}
+          @goto=${(e: Event) => { this.page = (e as CustomEvent).detail.page; }}
         ></pagination-controls>
       </div>
 
