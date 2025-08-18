@@ -8,7 +8,6 @@ class NavBar extends LitElement {
    :host { display:block; background:#fff; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:10; }
     .wrap { max-width:1400px; margin:0 auto; display:flex; align-items:center; gap:14px; padding:10px 18px; }
     .brand { display:flex; align-items:center; gap:10px; font-weight:700; color:var(--text); }
-    .brand img { width:100%; height:50px;padding:10px 18px;  }
     .dot { width:28px; height:28px; border-radius:8px; background:var(--brand); display:grid; place-items:center; color:#fff; font-weight:800; }
     .link { color:var(--text); opacity:.9; padding:8px 10px; border-radius:10px; text-decoration:none; display:flex; align-items:center; gap:8px; }
     .link:hover { background:#f8fafc; }
@@ -18,9 +17,9 @@ class NavBar extends LitElement {
     select { background:#fff; color:var(--text); border:1px solid var(--border); border-radius:10px; padding:6px 10px; }
     .spacer { flex:1; }
     .logo {
-      width: 100%;
-      height: 50px;
-      padding: 10px 18px;
+          max-width: 100%;
+    height: auto;
+    max-height:4rem;
     }
   `;
   constructor() {
