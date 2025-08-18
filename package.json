@@ -1,43 +1,23 @@
 {
-  "name": "ing-case-study-lit-elements",
+  "name": "ing-management-panel",
   "version": "1.0.0",
-  "description": "A Lit Element project for building web components",
-  "main": "dist/index.js",
+  "description": "Employee Management Application built with LitElement (JS) + Vaadin Router, with i18n, localStorage persistence, and tests",
   "type": "module",
   "scripts": {
-    "build": "tsc && vite build",
-    "dev": "vite",
-    "preview": "vite preview",
-    "serve": "vite dev",
-    "lint": "eslint src --ext .ts,.js,.html",
-    "lint:fix": "eslint src --ext .ts,.js,.html --fix",
-    "format": "prettier --write src/**/*.{ts,js,html,css}",
-    "test": "web-test-runner",
-    "test:watch": "web-test-runner --watch"
-  },
-  "keywords": [
-    "lit",
-    "lit-element",
-    "web-components",
-    "typescript"
-  ],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "@vaadin/router": "^2.0.0",
-    "lit": "^3.1.0",
-    "material-icons": "^1.13.14"
+    "dev": "web-dev-server --open --node-resolve --app-index index.html --watch",
+    "test": "web-test-runner --node-resolve --coverage",
+    "test:watch": "web-test-runner --node-resolve --watch",
+    "lint": "echo 'No linter configured'",
+    "build": "echo 'No build step needed; served as ES modules'"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
-    "@web/test-runner": "^0.18.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-lit": "^1.11.0",
-    "prettier": "^3.2.0",
-    "typescript": "^5.3.0",
-    "vite": "^5.1.0",
-    "vite-plugin-dts": "^3.7.0"
+    "@open-wc/testing": "^4.0.0",
+    "@web/dev-server": "^0.4.1",
+    "@web/test-runner": "^0.18.3",
+    "chai": "^5.1.1",
+    "sinon": "^18.0.0"
+  },
+  "dependencies": {
+    "heroicons": "^2.2.0"
   }
 }
