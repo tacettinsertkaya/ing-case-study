@@ -66,11 +66,6 @@ export class IngLink extends LitElement {
 
   @property({ type: String })
   url: string = '';
-   @property({ type: String })
-  icon: string = '';
-
-  @property({ type: String })
-  class: string = '';  
   
   @property({ type: String })
   type: linkVariant = 'default';
