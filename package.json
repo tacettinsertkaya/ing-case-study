@@ -1,0 +1,24 @@
+{
+  "name": "ing-case-study",
+  "version": "1.0.0",
+  "description": "Employee Management Application built with LitElement (JS) + Vaadin Router, with i18n, localStorage persistence, and tests",
+  "type": "module",
+  "scripts": {
+    "dev": "web-dev-server --open --node-resolve --app-index index.html --watch",
+    "test": "web-test-runner --node-resolve --coverage",
+    "test:watch": "web-test-runner --node-resolve --watch",
+    "lint": "echo 'No linter configured'",
+    "build": "echo 'No build step needed; served as ES modules'"
+  },
+  "devDependencies": {
+    "@open-wc/testing": "^4.0.0",
+    "@web/dev-server": "^0.4.1",
+    "@web/test-runner": "^0.18.3",
+    "@vaadin/router": "^2.0.0",
+    "chai": "^5.1.1",
+    "sinon": "^18.0.0"
+  },
+  "dependencies": {
+    "heroicons": "^2.2.0"
+  }
+}
