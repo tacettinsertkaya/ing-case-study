@@ -1,6 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { t, i18n } from '../assets/i18n/i18n.js';
+import { t } from '../assets/i18n/i18n';
 import { EmployeeSeed } from "../data/seed.js";
 import  '../components/pagination-controls';
 
@@ -89,7 +89,6 @@ export class EmployeeList extends LitElement {
                 <td>${e.email}</td>
                 <td>${e.department}</td>
                 <td>${e.position}</td>
-               
               </tr>
             `)}
           </tbody>

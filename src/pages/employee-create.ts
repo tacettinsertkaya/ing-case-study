@@ -13,8 +13,8 @@ export class EmployeeCreate extends LitElement {
     }
     render() {
         return html`
-            <h1>${t('create.title')}</h1>
-           
+            <h1>${t('employee.create.title')}</h1>
+            <employee-form mode="create"></employee-form>
         `;
     }
 }
