@@ -77,15 +77,24 @@ class IngButton extends LitElement {
   `;
 
   static properties = {
-    type: { type: String, reflect: true },
+    type: { type: 'button' | 'submit' | 'reset' | 'menu', reflect: true },
+    color: { type: 'primary' | 'secondary' | 'success' | 'danger', reflect: true },
     disabled: { type: Boolean, reflect: true },
   };
+  /**
+   *
+   */
+  constructor() {
+    super();
+    this.disabled = false;
+  }
 
 
   render() {
     return html`
       <button 
-        class=${this.type}
+        type=${this.type}
+        class=${this.color}
         ?disabled=${this.disabled}
         @click=${this._handleClick}
       >

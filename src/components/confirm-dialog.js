@@ -43,7 +43,7 @@ class ConfirmDialog extends LitElement {
             <ing-button
            
             @click=${() => this.#close(false)} title="Cancel">${t('common.cancel')}</ing-button>
-            <ing-button  type="danger" @click=${() => this.#close(true)} title="Proceed">
+            <ing-button  color="danger" type="button" @click=${() => this.#close(true)} title="Proceed">
               ${t('common.proceed')}
             </ing-button>
           </div>

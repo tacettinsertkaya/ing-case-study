@@ -8,19 +8,28 @@ class EmployeeEditView extends LitElement {
     id: { type: String },
     location: { attribute: false } // provided by vaadin-router
   };
-  constructor() { super(); this.id = ''; }
+
+  constructor() {
+    super();
+    this.id = '';
+    this.location = undefined;
+  }
+
   firstUpdated() {
     // Prefer vaadin-router provided params, fallback to URL parsing
     const fromRouter = this.location?.params?.id;
-    const fromPath = (location.pathname.match(/\/employees\/(.+)\/edit/) || [])[1];
+    const match = window.location.pathname.match(/\/employees\/([^/]+)\/edit/);
+    const fromPath = match ? match[1] : '';
     this.id = fromRouter || fromPath || '';
   }
+
   render() {
     const employee = getEmployee(this.id);
     return html`
-     <h2>${t('employee.edit.title')}</h2>
-      <employee-form .mode=${'edit'} .employee=${employee} ></employee-form>
+      <h2>${t('employee.edit.title')}</h2>
+      <employee-form .mode=${'edit'} .employee=${employee}></employee-form>
     `;
   }
 }
+
 customElements.define('employee-edit-view', EmployeeEditView);

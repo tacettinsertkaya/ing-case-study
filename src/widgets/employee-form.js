@@ -125,7 +125,7 @@ class EmployeeForm extends LitElement {
     return html`
       <h2>${this.title}</h2>
       <div class="card">
-        <form >
+        <form @submit=${this.onSubmit}>
           <label>
             ${t('employee.firstName')}
             <input .value=${this.firstName || ''} @input=${e => this.firstName = e.target.value} required />
@@ -172,11 +172,12 @@ class EmployeeForm extends LitElement {
             </select>
           </label>
           <div class="actions">
-            <ing-button  url="/employees" @clickEvent=${this.cancel}>
+            <ing-button type="button" @clickEvent=${this.cancel}>
               ${t('common.cancel')}
             </ing-button>
-            <ing-button type="primary" @clickEvent=${this.onSubmit}> ${this.mode === 'edit' ? t('common.update') : t('common.save')}</ing-button>
-
+            <ing-button type="submit" color="primary">
+              ${this.mode === 'edit' ? t('common.update') : t('common.save')}
+            </ing-button>
           </div>
         </form>
       </div>

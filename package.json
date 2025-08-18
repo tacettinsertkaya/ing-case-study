@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "web-dev-server --open --node-resolve --app-index index.html --watch",
-    "test": "web-test-runner --node-resolve --coverage",
+    "test": "web-test-runner --node-resolve --coverage \"test/**/*.test.js\"",
     "test:watch": "web-test-runner --node-resolve --watch",
     "lint": "echo 'No linter configured'",
     "build": "echo 'No build step needed; served as ES modules'"
