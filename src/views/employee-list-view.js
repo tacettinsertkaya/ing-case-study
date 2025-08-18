@@ -4,10 +4,11 @@ import { t } from '../utils/i18n.js';
 import { getIcon } from '../utils/icons.js';
 import '../components/pagination-controls.js';
 import '../components/confirm-dialog.js';
+import '../components/ui-elements/ing-link.js';
+import '../components/ui-elements/ing-button.js';
 
 class EmployeeListView extends LitElement {
   static properties = {
-    view: { type: String }, // 'list'|'table'
     search: { type: String },
     page: { type: Number },
     pageSize: { type: Number },
@@ -38,7 +39,6 @@ class EmployeeListView extends LitElement {
     this._onLang = () => this.requestUpdate();
     document.addEventListener('i18n-changed', this._onLang);
 
-    this.view = 'table';
     this.search = '';
     this.page = 1;
     this.pageSize = 8;
@@ -72,14 +72,22 @@ class EmployeeListView extends LitElement {
     }
     this.confirm = false; this.toDelete = null;
   }
+
+  selectAll(e) {
+    const checked = e.target.checked;
+    this.pageSlice().forEach(emp => {
+      emp.isSelected = checked;
+    });
+    this.requestUpdate();
+  }
   renderTable() {
     return html`
       <div class="card">
-        <table aria-label=${t('list.title')}>
+        <table aria-label=${t('employee.list.title')}>
           <thead>
             <tr>
-              <th><input class="chk" type="checkbox" aria-label="Select all" /></th>
-              <th>${t('employee.firstName')}</th>
+              <th><input class="chk" type="checkbox" @change=${this.selectAll} aria-label="Select all" /></th>
+              <th>${t('employee.firstName')} </th>
               <th>${t('employee.lastName')}</th>
               <th>${t('employee.doe')}</th>
               <th>${t('employee.dob')}</th>
@@ -87,13 +95,15 @@ class EmployeeListView extends LitElement {
               <th>${t('employee.email')}</th>
               <th>${t('employee.department')}</th>
               <th>${t('employee.position')}</th>
-              <th style="text-align:right">${t('list.actions')}</th>
+              <th style="text-align:right">${t('employee.list.actions')}</th>
             </tr>
           </thead>
           <tbody>
             ${this.pageSlice().map(e => html`
               <tr>
-                <td><input class="chk" type="checkbox" aria-label="Select row" /></td>
+                <td><input class="chk" type="checkbox" 
+                ?checked=${e.isSelected}
+                aria-label="Select row" /></td>
                 <td>${e.firstName}</td>
                 <td>${e.lastName}</td>
                 <td>${e.doe}</td>
@@ -103,8 +113,8 @@ class EmployeeListView extends LitElement {
                 <td>${e.department}</td>
                 <td>${e.position}</td>
                 <td class="actions">
-                  <a class="action" href="/employees/${e.id}/edit" title="${t('list.edit')}">${getIcon('pencil', '18')}</a>
-                  <a class="action" role="button" @click=${() => this.askDelete(e)}  title="${t('list.delete')}">${getIcon('trash', '18')}</a>
+                  <ing-link url="/employees/${e.id}/edit" title="${t('employee.list.edit')}">${getIcon('pencil', '24')}</ing-link>
+                  <ing-link @click=${() => this.askDelete(e)} title="${t('employee.list.delete')}">${getIcon('trash', '24')}</ing-link>
                 </td>
               </tr>
             `)}
@@ -115,9 +125,9 @@ class EmployeeListView extends LitElement {
   }
   render() {
     return html`
-      <h2>${t('list.title')}</h2>
+      <h2>${t('employee.list.title')}</h2>
       <div class="head">
-        <input type="search" placeholder="${t('list.search')}..." @input=${e => { this.search = e.target.value; this.page = 1; }} .value=${this.search} />
+        <input type="search" placeholder="${t('employee.list.search')}..." @input=${e => { this.search = e.target.value; this.page = 1; }} .value=${this.search} />
       </div>
       ${this.renderTable()}
       <div style="margin-top:14px;">
@@ -133,7 +143,7 @@ class EmployeeListView extends LitElement {
       <confirm-dialog
         ?open=${this.confirm}
         .title=${'Are you sure?'}
-        .message=${this.toDelete ? `Selected Employee record of ${this.toDelete.firstName} ${this.toDelete.lastName} will be deleted` : ''}
+        .message=${this.toDelete ? `Selected Employee record of ${this.toDelete.firstName} ${this.toDelete.lastName} will be deleted.` : ''}
         @close=${this.onConfirmClose}
       ></confirm-dialog>
     `;

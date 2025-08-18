@@ -3,21 +3,7 @@
     "employees": "Employees",
     "addEmployee": "Add Employee"
   },
-  "list": {
-    "title": "Employee List",
-    "search": "Search",
-    "view": "View",
-    "view_list": "List",
-    "view_table": "Table",
-    "add": "Add",
-    "edit": "Edit",
-    "delete": "Delete",
-    "actions": "Actions",
-    "confirmDelete": "Delete this employee? This cannot be undone.",
-    "noResults": "No employees found.",
-    "page": "Page",
-    "of": "of"
-  },
+
   "employee": {
     "title": "Employee List",
     "firstName": "First Name",
@@ -37,8 +23,6 @@
       "Medior": "Medior",
       "Senior": "Senior"
     },
-    "cancel": "Cancel",
-    "save": "Save",
     "confirmSave": "Apply these changes?",
     "confirmCreate": "Create this employee?",
     "confirmCancel":"Discard changes?",
@@ -56,16 +40,27 @@
     },
     "edit": {
       "title": "Edit Employee"
-    }
-
+    },
+      "list": {
+    "title": "Employee List",
+    "search": "Search",
+    "view": "View",
+    "view_list": "List",
+    "view_table": "Table",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "actions": "Actions",
+    "confirmDelete": "Delete this employee? This cannot be undone.",
+    "noResults": "No employees found.",
+    "page": "Page",
+    "of": "of"
+  }
   },
-  "fields": {
-    "fullName": "Full Name",
-    "department": "Department",
-    "position": "Position",
-    "email": "Email",
-    "phone": "Phone",
-    "dob": "Birth",
-    "doe": "Date of Employment"
+  "common": {
+    "cancel": "Cancel",
+    "proceed": "Proceed",
+    "save": "Save",
+    "update": "Update"
   }
 }

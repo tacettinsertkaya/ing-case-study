@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
 
 class IngLink extends LitElement {
   static styles = css`

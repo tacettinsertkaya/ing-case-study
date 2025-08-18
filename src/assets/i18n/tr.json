@@ -1,71 +1,62 @@
 {
-  "nav": {
-    "employees": "Çalışanlar",
-    "addEmployee": "Çalışan Ekle"
-  },
-  "list": {
-    "title": "Çalışan Listesi",
-    "search": "Ara",
-    "view": "Görüntüle",
-    "view_list": "Liste",
-    "view_table": "Tablo",
-    "add": "Ekle",
-    "edit": "Düzenle",
-    "delete": "Sil",
-    "actions": "Eylemler",
-    "confirmDelete": "Bu çalışanı silmek istiyor musunuz? Bu işlem geri alınamaz.",
-    "noResults": "Hiç çalışan bulunamadı.",
-    "page": "Sayfa",
-    "of": "of"
-  },
   "employee": {
-    "title": "Çalışan Listesi",
-    "firstName": "Ad",
-    "lastName": "Soyad",
+    "cancel": "İptal",
+    "confirmCancel": "Değişiklikleri iptal et?",
+    "confirmCreate": "Bu çalışanı oluştur?",
+    "confirmSave": "Bu değişiklikleri uygula?",
+    "create": {
+      "title": "Çalışan Ekle"
+    },
+    "department": "Departman",
+    "departments": {
+      "Analytics": "Analiz",
+      "Tech": "Teknoloji"
+    },
     "dob": "Doğum Tarihi",
     "doe": "İşe Giriş Tarihi",
-    "phone": "Telefon Numarası",
-    "email": "E-posta Adresi",
-    "department": "Departman",
-    "position": "Pozisyon",
-    "departments": {
-      "Analytics": "Analytics",
-      "Tech": "Tech"
+    "edit": {
+      "title": "Çalışanı Düzenle"
     },
+    "email": "Email Adresi",
+    "firstName": "Ad",
+    "lastName": "Soyad",
+    "list": {
+      "actions": "Eylemler",
+      "add": "Ekle",
+      "confirmDelete": "Bu çalışanı silmek istiyor musunuz? Bu işlem geri alınamaz.",
+      "delete": "Sil",
+      "edit": "Düzenle",
+      "noResults": "Hiç çalışan bulunamadı.",
+      "of": " / ",
+      "page": "Sayfa",
+      "search": "Ara",
+      "title": "Çalışan Listesi",
+      "view": "Görünüm",
+      "view_list": "Liste",
+      "view_table": "Tablo"
+    },
+    "phone": "Telefon Numarası",
+    "position": "Pozisyon",
     "positions": {
       "Junior": "Junior",
       "Medior": "Medior",
       "Senior": "Senior"
     },
-    "cancel": "İptal",
     "save": "Kaydet",
-    "confirmSave": "Bu değişiklikleri uygula?",
-    "confirmCreate": "Bu çalışanı oluştur?",
-    "confirmCancel":"Değişiklikleri geri al?",
+    "title": "Çalışan Listesi",
+    "update": "Güncelle",
     "validation": {
-      "required": "Bu alan gereklidir.",
-      "email": "Geçerli bir e-posta girin.",
-      "phone": "Geçerli bir telefon numarası girin (en az 7 haneli).",
       "dobPast": "Doğum tarihi geçmişte olmalıdır.",
-      "doeRange": "İşe giriş tarihi doğum tarihinden sonra olmalı ve gelecekte olmamalıdır.",
-      "uniqueEmail": "Bu e-posta zaten mevcut.",
-      "uniquePhone": "Bu telefon zaten mevcut."
-    },
-    "create": {
-      "title": "Çalışan Ekle"
-    },
-    "edit": {
-      "title": "Çalışanı Düzenle"
+      "doeRange": "İşe giriş tarihi doğumdan sonra ve gelecekte olmamalıdır.",
+      "email": "Geçerli bir email girin.",
+      "phone": "Geçerli bir telefon numarası girin (en az 7 haneli).",
+      "required": "Bu alan gereklidir.",
+      "uniqueEmail": "Bu email zaten mevcut.",
+      "uniquePhone": "Bu telefon numarası zaten mevcut."
     }
-
   },
-  "fields": {
-    "fullName": "Tam Ad",
-    "department": "Departman",
-    "position": "Pozisyon",
-    "email": "E-posta",
-    "phone": "Telefon",
-    "dob": "Doğum",
-    "doe": "İşe Giriş Tarihi"
+  "nav": {
+    "addEmployee": "Çalışan Ekle",
+    "employees": "Çalışanlar"
   }
 }

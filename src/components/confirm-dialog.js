@@ -1,4 +1,6 @@
 import { LitElement, html, css } from 'lit';
+import '../components/ui-elements/ing-button.js';
+import { t } from '../utils/i18n.js';
 
 class ConfirmDialog extends LitElement {
   static properties = {
@@ -25,20 +27,25 @@ class ConfirmDialog extends LitElement {
     }
     .btn-primary { background: var(--brand); border-color: var(--brand); color: #fff; }
   `;
-  constructor(){ super(); this.open = false; this.title = 'Are you sure?'; this.message = ''; }
-  #close(confirmed){
+  constructor() { super(); this.open = false; this.title = 'Are you sure?'; this.message = ''; }
+  #close(confirmed) {
     this.open = false;
     this.dispatchEvent(new CustomEvent('close', { detail: { confirmed } }));
   }
-  render(){
+  render() {
     return html`
       <div class="backdrop" @click=${() => this.#close(false)}>
-        <div class="panel" @click=${e=>e.stopPropagation()}>
+        <div class="panel" @click=${e => e.stopPropagation()}>
           <h3>${this.title}</h3>
           <p>${this.message}</p>
           <div class="actions">
-            <button class="btn btn-primary" @click=${() => this.#close(true)}>Proceed</button>
-            <button class="btn" @click=${() => this.#close(false)}>Cancel</button>
+            
+            <ing-button
+           
+            @click=${() => this.#close(false)} title="Cancel">${t('common.cancel')}</ing-button>
+            <ing-button  type="danger" @click=${() => this.#close(true)} title="Proceed">
+              ${t('common.proceed')}
+            </ing-button>
           </div>
         </div>
       </div>

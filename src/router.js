@@ -1,4 +1,4 @@
-import { Router } from 'https://cdn.jsdelivr.net/npm/@vaadin/router@1.7.5/dist/vaadin-router.js';
+import { Router } from '@vaadin/router';
 
 // Route views (lazy imports)
 const outlet = document.getElementById('outlet');

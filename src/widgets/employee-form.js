@@ -173,9 +173,9 @@ class EmployeeForm extends LitElement {
           </label>
           <div class="actions">
             <ing-button  url="/employees" @clickEvent=${this.cancel}>
-              ${t('employee.cancel')}
+              ${t('common.cancel')}
             </ing-button>
-            <ing-button type="primary" @clickEvent=${this.onSubmit}> ${this.mode === 'edit' ? t('employee.update') : t('employee.save')}</ing-button>
+            <ing-button type="primary" @clickEvent=${this.onSubmit}> ${this.mode === 'edit' ? t('common.update') : t('common.save')}</ing-button>
 
           </div>
         </form>

@@ -18,6 +18,7 @@ class EmployeeEditView extends LitElement {
   render() {
     const employee = getEmployee(this.id);
     return html`
+     <h2>${t('employee.edit.title')}</h2>
       <employee-form .mode=${'edit'} .employee=${employee} ></employee-form>
     `;
   }
