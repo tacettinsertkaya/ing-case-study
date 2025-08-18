@@ -1,5 +1,5 @@
-import { en } from './en.js';
-import { tr } from './tr.js';
+import en from './en.json';
+import tr from './tr.json';
 const dictionaries = {
   en: en,
   tr: tr
@@ -11,7 +11,8 @@ function getLang() {
   return lang === 'tr' ? 'tr' : 'en';
 }
 
-class I18n {
+export class I18n {
+  _lang: string;
   constructor() {
     this._lang = getLang();
   }

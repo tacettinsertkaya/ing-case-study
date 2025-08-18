@@ -20,6 +20,6 @@
     "outDir": "./dist",
     "rootDir": "./src"
   },
-  "include": ["src", "assets/i18n/i18n.js"],
+  "include": ["src", "assets/i18n/i18n.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,16 +1,20 @@
 import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
+import { t, i18n } from '../../assets/i18n/i18n.js';
 
 @customElement('employee-edit')
 export class EmployeeEdit extends LitElement {
+     private _onLang: () => void;
+
+    constructor() {
+        super();
+        this._onLang = () => this.requestUpdate();
+        document.addEventListener('i18n-changed', this._onLang);
+    }
     render() {
         return html`
-            <h1>Edit Employee</h1>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <button type="submit">Save</button>
-            </form>
+            <h1>${t('edit.title')}</h1>
+            
         `;
     }
 }
